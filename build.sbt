@@ -8,8 +8,9 @@ libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test" 
 libraryDependencies += "com.softwaremill.macwire" %% "macros" % "2.2.5" % "provided"
 
-EclipseKeys.withSource := true
-EclipseKeys.createSrc := EclipseCreateSrc.Default
+libraryDependencies += "com.lihaoyi" % "ammonite" % "0.8.2" % "test" cross CrossVersion.full
+initialCommands in (Test, console) := """ammonite.Main().run()"""
+
 scalacOptions := Seq("-encoding", "utf8", "-feature", "-deprecation", "-optimise", "-target:jvm-1.8", "-Ywarn-unused", "-Ywarn-dead-code", "-Ywarn-unused-import")
 
 updateOptions := updateOptions.value.withCachedResolution(true)
